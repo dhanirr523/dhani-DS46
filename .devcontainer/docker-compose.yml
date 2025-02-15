@@ -1,0 +1,11 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: dhanirr523
+      POSTGRES_PASSWORD: 1234qwer4r
+      POSTGRES_DB: dhanirr523
+    ports:
+      - "5432:5432"

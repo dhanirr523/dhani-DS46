@@ -1,0 +1,17 @@
+{
+    "name": "My Codespace Environment",
+    "dockerComposeFile": ["docker-compose.yml"],
+    "service": "postgres",
+    "workspaceFolder": "/workspace",
+    "extensions": [
+      "ms-azuretools.vscode-docker"
+    ],
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "mounts": [
+      "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+    ],
+    "postCreateCommand": ""
+  }
+  
