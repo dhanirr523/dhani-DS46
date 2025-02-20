@@ -1,5 +1,5 @@
 CREATE TABLE menu (
-    id SERIAL PRIMARY KEY,
+    id INT PRIMARY KEY,
     restaurant_id INTEGER,
     item_name VARCHAR(100),
     item_description TEXT,

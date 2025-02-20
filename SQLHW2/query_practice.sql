@@ -1,8 +1,14 @@
-SELECT r.name, r.street_address, m.item_name, m.item_description, m.price, AVG(rev.rating) AS average_rating
-FROM restaurant r
-LEFT JOIN menu m ON r.id = m.restaurant_id
-LEFT JOIN review rev ON r.id = rev.restaurant_id
-GROUP BY r.id, m.id;
-
-
+SELECT 
+    r.id, 
+    r.name, 
+    avg_rev.avg_rating,
+    STRING_AGG(m.item_name, ', ') AS menu_items
+FROM restaurant AS r
+INNER JOIN (
+    SELECT restaurant_id, ROUND(AVG(rating), 2) AS avg_rating
+    FROM review
+    GROUP BY restaurant_id
+) AS avg_rev ON r.id = avg_rev.restaurant_id
+INNER JOIN menu AS m ON r.id = m.restaurant_id
+GROUP BY r.id, r.name, avg_rev.avg_rating;
 
